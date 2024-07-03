@@ -115,3 +115,54 @@ Note that Maplab has two CSV exporters. This file-format is the same as produced
 | `global_knn_max_dist` | Error between points is limited to this value during global optimization. | 1.0 |
 | `local_knn_max_dist` | Error between points is limited to this value during local optimization. | 0.1 |
 | `time_cal` | True to perform time offset calibration | true |
+
+## 编译报错
+
+1. ![image](https://github.com/countsp/lidar_align/assets/102967883/6884412c-61a4-47b8-ad06-cc79831790d5)
+
+**解决方案**：安装nlopt
+```
+git clone http://github.com/stevengj/nlopt
+cd nlopt/
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
+在  /usr/local/lib/cmake 目录下出现 nlopt 文件。
+![image](https://github.com/countsp/lidar_align/assets/102967883/5e737a39-4b3d-4632-b721-87ad0ca10f6e)
+
+
+2.报错 error PCL requires C++14 or above
+
+**解决方案**：修改CMakeList.txt
+
+```
+# 添加设置
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+cmake_minimum_required(VERSION 2.8.3)
+
+project(lidar_align)
+
+add_definitions(-std=c++11 -ofast)
+
+
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  image_transport
+  cv_bridge
+  pcl_ros
+  rosbag
+  sensor_msgs
+  geometry_msgs
+)
+
+# NLOPT is frustratingly inconsistent in the name of its cmake file so we use our own
+list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR})
+# 添加nplot位置
+list(APPEND CMAKE_PREFIX_PATH "/usr/local/lib/cmake/nlopt")
+find_package(NLOPT REQUIRED)
+```
