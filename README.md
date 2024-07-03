@@ -117,6 +117,7 @@ Note that Maplab has two CSV exporters. This file-format is the same as produced
 | `time_cal` | True to perform time offset calibration | true |
 
 ## 编译报错
+[ref](https://blog.csdn.net/m0_52765390/article/details/137519839)
 
 1. ![image](https://github.com/countsp/lidar_align/assets/102967883/6884412c-61a4-47b8-ad06-cc79831790d5)
 
