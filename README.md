@@ -247,6 +247,8 @@ roslaunch lidar_align lidar_align.launch
 
 标定好之后会在终端显示出标定结果，也会在 result 文件夹下面生成对应的标定文件。
 
+![image](https://github.com/countsp/lidar_align/assets/102967883/3797f234-4352-4c36-a0c0-fe9a49a36761)
+
 ```
 一个从姿态传感器imu坐标系到激光雷达坐标系的转换关系，包括平移向量、旋转矩阵、四元数和时间偏移
   
