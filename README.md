@@ -273,3 +273,38 @@ roslaunch lidar_align lidar_align.launch
 ```
 
 
+```
+
+[ INFO] [1719975641.741209783]: Saving Aligned Pointcloud...                                     
+[ INFO] [1719975644.525074982]: Saving Calibration File...                                
+[ INFO] [1719975644.525125970]: Final Calibration:                                
+Active Transformation Vector (x,y,z,rx,ry,rz) from the Pose Sensor Frame to  the Lidar Frame:
+[0.0634456, -0.16885, -0.122167, -0.671242, -2.72577, 0.00872272]
+
+Active Transformation Matrix from the Pose Sensor Frame to  the Lidar Frame:
+ -0.833431   0.450473  -0.320105  0.0634456
+  0.452512   0.888798  0.0726056   -0.16885
+  0.317216 -0.0843398  -0.944595  -0.122167
+         0          0          0          1
+
+Active Translation Vector (x,y,z) from the Pose Sensor Frame to  the Lidar Frame:
+[0.0634456, -0.16885, -0.122167]
+
+Active Hamiltonen Quaternion (w,x,y,z) the Pose Sensor Frame to  the Lidar Frame:
+[0.166411, -0.235779, -0.957448, 0.00306392]
+
+Time offset that must be added to lidar timestamps in seconds:
+0.0731573
+
+ROS Static TF Publisher: <node pkg="tf" type="static_transform_publisher" name="pose_lidar_broadcaster" args="0.0634456 -0.16885 -0.122167 -0.235779 -0.957448 0.00306392 0.166411 POSE_FRAME LIDAR_FRAME 100" />
+[lidar_align-2] process has finished cleanly
+log file: /home/office2004/.ros/log/c898fb8e-38db-11ef-9797-2b170f60219f/lidar_align-2*.log
+^C[rosout-1] killing on exit
+^C[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+done
+
+```
+
+```
