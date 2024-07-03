@@ -228,3 +228,45 @@ types.push_back(std::string("sensor_msgs/Imu"));
     }
   }
 ```
+3.修改bag路径：
+
+打开 /home/ubuntu/${name}/lidar_align/src/lidar_align/launch/lidar_align.launch ，修改 <arg name="bag_file" default="/PATH/TO/YOUR.bag"/> ，将 default="/PATH/TO/YOUR.bag"/> 替换为lidarimu.bag包的路径。
+
+![image](https://github.com/countsp/lidar_align/assets/102967883/6b4fb1af-6829-402d-96bd-67a560c6d981)
+
+4.进入lidar_align工程，打开terminal，运行以下命令：
+```
+source devel/setup.bash 
+roslaunch lidar_align lidar_align.launch
+```
+![image](https://github.com/countsp/lidar_align/assets/102967883/5ae93785-ad7f-47dd-8800-808f5d01ef14)
+
+开始标定迭代过程，上图中的Iteration表示迭代次数。
+
+![image](https://github.com/countsp/lidar_align/assets/102967883/adc36148-c536-4e5a-9be5-d0cd4ed831d3)
+
+标定好之后会在终端显示出标定结果，也会在 result 文件夹下面生成对应的标定文件。
+```
+一个从姿态传感器imu坐标系到激光雷达坐标系的转换关系，包括平移向量、旋转矩阵、四元数和时间偏移。这些信息对于在ROS中正确对齐激光雷达数据至关重要。
+
+    平移向量：
+    -0.0107452, 0.0120904, 0.00375917
+
+    这表示从姿态传感器坐标系到激光雷达坐标系在x、y、z轴上的平移量。
+
+    旋转矩阵：
+
+    这是一个3x3的矩阵，描述了从姿态传感器坐标系到激光雷达坐标系的旋转关系。
+
+    四元数：
+    [0.0131817, 0.00623436, 2.43504e-05, -0.999894]
+
+    四元数提供了一种紧凑且不易出现奇异值的方式来描述三维旋转。
+
+    时间偏移：
+    -0.05237
+
+    这表示在将激光雷达的时间戳用于姿态估计或对齐时，需要从这个时间戳中减去0.05237秒。
+```
+
+
